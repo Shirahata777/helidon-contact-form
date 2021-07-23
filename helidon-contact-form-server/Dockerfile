@@ -2,7 +2,7 @@
 # 1st stage, build the app
 FROM maven:3.6-jdk-11 as build
 
-WORKDIR /helidon
+WORKDIR /helidon-contact-form-server
 
 # Create a first layer to cache the "Maven World" in the local repository.
 # Incremental docker builds will always resume after that, unless you update
@@ -19,12 +19,12 @@ RUN echo "done!"
 
 # 2nd stage, build the runtime image
 FROM openjdk:11-jre-slim
-WORKDIR /helidon
+WORKDIR /helidon-contact-form-server
 
 # Copy the binary built in the 1st stage
-COPY --from=build /helidon/target/helidon-contact-form-server.jar ./
-COPY --from=build /helidon/target/libs ./libs
+COPY --from=build /helidon-contact-form-server/target/helidon-contact-form-server.jar ./
+COPY --from=build /helidon-contact-form-server/target/libs ./libs
 
 CMD ["java", "-jar", "helidon-contact-form-server.jar"]
 
-EXPOSE 8080
+EXPOSE 3000

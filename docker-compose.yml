@@ -1,0 +1,28 @@
+version: "3"
+services:
+  helidon-contact-form-front:
+    container_name: helidon-contact-form-front
+    build:
+      context: .
+      dockerfile: ./helidon-contact-form-front/Dockerfile
+    ports:
+      - 8080:8080
+    volumes:
+      - ./helidon-contact-form-front:/helidon-contact-form-front
+    tty: true
+    stdin_open: true
+    # Hot Module Replacement (HMR) is enable for virtual box.
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+  helidon-contact-form-server:
+    container_name: helidon-contact-form-server
+    build:
+      context: ./helidon-contact-form-server/
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/helidon-contact-form-front
+    tty: true
+    stdin_open: true
+
