@@ -1,28 +1,69 @@
 <template>
-  <div>
-    <form action="" class="flex flex-col">
-      <input
-        type="text"
-        name="name"
-        id="name"
-        placeholder="お名前を入力してください！"
-        class="form-input px-4 py-3 rounded-full"
-      />
-      <input
-        type="email"
-        name="email"
-        id="email"
-        placeholder="メールアドレスを入力してね！"
-        class="form-input px-4 py-3 rounded-full"
-      />
-      <input
-        type="text"
-        name="contact"
-        id="contact"
-        placeholder="お問い合わせ内容を入力してください！"
-        class="form-input px-4 py-3 rounded-full"
-      />
-      <input type="submit" value="送信" class="form-input px-4 py-3 rounded-full" />
+  <div class="relative">
+    <form class="grid grid-cols-1 gap-6 m-16">
+      <label class="block">
+        <span class="text-gray-700">Full name</span>
+        <input
+          type="text"
+          class="
+            mt-1
+            block
+            w-full
+            rounded-md
+            border-gray-300
+            shadow-sm
+            focus:border-indigo-300
+            focus:ring focus:ring-indigo-200 focus:ring-opacity-50
+          "
+          placeholder=""
+        />
+      </label>
+      <label class="block">
+        <span class="text-gray-700">Email address</span>
+        <input
+          type="email"
+          class="
+            mt-1
+            block
+            w-full
+            rounded-md
+            border-gray-300
+            shadow-sm
+            focus:border-indigo-300
+            focus:ring focus:ring-indigo-200 focus:ring-opacity-50
+          "
+          placeholder="john@example.com"
+        />
+      </label>
+      <label class="block">
+        <span class="text-gray-700">Content of inquiry</span>
+        <textarea
+          class="
+            mt-1
+            block
+            w-full
+            rounded-md
+            border-gray-300
+            shadow-sm
+            focus:border-indigo-300
+            focus:ring focus:ring-indigo-200 focus:ring-opacity-50
+          "
+          rows="3"
+        ></textarea>
+      </label>
+      <div class="block">
+        <div class="mt-2">
+          <div>
+            <label class="inline-flex items-center">
+              <input
+                type="submit"
+                value="Submit"
+                class="form-input rounded-full"
+              />
+            </label>
+          </div>
+        </div>
+      </div>
     </form>
   </div>
 </template>
