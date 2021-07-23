@@ -1,0 +1,25 @@
+helidon-contact-form-server/.settings/
+*.class
+
+helidon-contact-form-front/node_modules/
+helidon-contact-form-front/dist
+
+
+# local env files
+helidon-contact-form-front/.env.local
+helidon-contact-form-front/.env.*.local
+
+# Log files
+helidon-contact-form-front/npm-debug.log*
+helidon-contact-form-front/yarn-debug.log*
+helidon-contact-form-front/yarn-error.log*
+helidon-contact-form-front/pnpm-debug.log*
+
+# Editor directories and files
+helidon-contact-form-front/.idea
+helidon-contact-form-front/.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

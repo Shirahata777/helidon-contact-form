@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Built-By: shirahatayuusuke
+Build-Jdk: 15.0.2
+Class-Path: libs/helidon-webserver-2.3.2.jar libs/helidon-common-reactiv
+ e-2.3.2.jar libs/helidon-common-mapper-2.3.2.jar libs/helidon-common-2.
+ 3.2.jar libs/helidon-common-http-2.3.2.jar libs/helidon-media-common-2.
+ 3.2.jar libs/helidon-config-2.3.2.jar libs/helidon-common-media-type-2.
+ 3.2.jar libs/helidon-common-key-util-2.3.2.jar libs/helidon-common-conf
+ igurable-2.3.2.jar libs/opentracing-util-0.33.0.jar libs/opentracing-ap
+ i-0.33.0.jar libs/opentracing-noop-0.33.0.jar libs/helidon-tracing-conf
+ ig-2.3.2.jar libs/netty-codec-http-4.1.63.Final.jar libs/netty-common-4
+ .1.63.Final.jar libs/netty-transport-4.1.63.Final.jar libs/netty-codec-
+ 4.1.63.Final.jar libs/netty-codec-http2-4.1.63.Final.jar libs/netty-han
+ dler-4.1.63.Final.jar libs/netty-resolver-4.1.63.Final.jar libs/helidon
+ -media-jsonp-2.3.2.jar libs/jakarta.json-1.1.6.jar libs/helidon-config-
+ yaml-2.3.2.jar libs/snakeyaml-1.27.jar libs/jakarta.annotation-api-1.3.
+ 5.jar libs/microprofile-config-api-1.4.jar libs/helidon-health-2.3.2.ja
+ r libs/helidon-fault-tolerance-2.3.2.jar libs/microprofile-health-api-2
+ .2.jar libs/helidon-webserver-cors-2.3.2.jar libs/helidon-health-checks
+ -2.3.2.jar libs/helidon-health-common-2.3.2.jar libs/helidon-metrics-2.
+ 3.2.jar libs/helidon-config-mp-2.3.2.jar libs/helidon-common-service-lo
+ ader-2.3.2.jar libs/microprofile-metrics-api-2.3.2.jar libs/helidon-ser
+ vice-common-rest-2.3.2.jar libs/helidon-common-context-2.3.2.jar libs/n
+ etty-buffer-4.1.63.Final.jar
+Main-Class: com.github.shirahata777.Main
+Created-By: Maven Integration for Eclipse
+
