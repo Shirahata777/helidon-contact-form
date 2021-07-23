@@ -1,12 +1,11 @@
 <template>
     <div>
         <form action="">
-            <input type="text" name="name" id="name">
-            <input type="email" name="email" id="email">
-            <input type="text" name="contact" id="contact">
-            <input type="submit" value="">
-        </form>
-        
+            <input type="text" name="name" id="name" placeholder="お名前を入力してください！">
+            <input type="email" name="email" id="email" placeholder="メールアドレスを入力してね！">
+            <input type="text" name="contact" id="contact" placeholder="お問い合わせ内容を入力してください！">
+            <input type="submit" value="送信">
+        </form>     
     </div>
 </template>
 <script>
