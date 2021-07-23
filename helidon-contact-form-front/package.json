@@ -9,10 +9,12 @@
     "build:css": "tailwindcss build tailwind.css -o public/style.css"
   },
   "dependencies": {
-    "autoprefixer": "^10.3.1",
+    "@tailwindcss/forms": "^0.3.3",
+    "@tailwindcss/postcss7-compat": "^2.2.6",
+    "autoprefixer": "^9",
     "core-js": "^3.6.5",
-    "postcss": "^8.3.6",
-    "tailwindcss": "^2.2.6",
+    "postcss": "^7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "vue": "^3.0.0"
   },
   "devDependencies": {
