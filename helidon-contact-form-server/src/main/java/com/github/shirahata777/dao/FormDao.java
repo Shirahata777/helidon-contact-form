@@ -19,14 +19,14 @@ import io.helidon.webserver.ServerResponse;
 import io.helidon.webserver.Service;
 
 public class FormDao implements Service {
-	
-    private static final JsonBuilderFactory JSON = Json.createBuilderFactory(Collections.emptyMap());
-    
-    public FormDao(Config config) {
+
+	private static final JsonBuilderFactory JSON = Json.createBuilderFactory(Collections.emptyMap());
+
+	public FormDao(Config config) {
 	}
 
 	public boolean saveFormData(String name, String email, String content) {
-		
+
 		HikariDataSource ds = new HikariDataSource();
 		ds.setJdbcUrl("jdbc:mysql://mysql:3306/contact_db?useSSL=false");
 		ds.setUsername("root");
@@ -47,42 +47,40 @@ public class FormDao implements Service {
 			throw new RuntimeException(e);
 		}
 
-		
 	}
-	
-	//	以下後に移行予定
-	
+
+	// 以下後に移行予定
+
 	/**
-     * A service registers itself by updating the routing rules.
-     * @param rules the routing rules.
-     */
-    @Override
-    public void update(Routing.Rules rules) {
-        rules.get("/save", this::saveFormDataHandler);
-    }
-  
+	 * A service registers itself by updating the routing rules.
+	 * 
+	 * @param rules the routing rules.
+	 */
+	@Override
+	public void update(Routing.Rules rules) {
+		rules.get("/save", this::saveFormDataHandler);
+	}
 
-    /**
-     * Return a greeting message using the name that was provided.
-     * @param request the server request
-     * @param response the server response
-     */
-    private void saveFormDataHandler(ServerRequest request, ServerResponse response) {
-        Map params = request.queryParams().toMap();
-        String name = params.get("name").toString();
-        String email = params.get("email").toString();
-        String content = params.get("content").toString();
-        saveFormData(name, email, content);
-        sendResponse(response);
-    }
+	/**
+	 * Return a greeting message using the name that was provided.
+	 * 
+	 * @param request  the server request
+	 * @param response the server response
+	 */
+	private void saveFormDataHandler(ServerRequest request, ServerResponse response) {
+		Map params = request.queryParams().toMap();
+		String name = params.get("name").toString();
+		String email = params.get("email").toString();
+		String content = params.get("content").toString();
+		saveFormData(name, email, content);
+		sendResponse(response);
+	}
 
-    private void sendResponse(ServerResponse response) {
-        String msg = String.format("Save OK!");
+	private void sendResponse(ServerResponse response) {
+		String msg = String.format("Save OK!");
 
-        JsonObject returnObject = JSON.createObjectBuilder()
-                .add("message", msg)
-                .build();
-        response.send(returnObject);
-    }
+		JsonObject returnObject = JSON.createObjectBuilder().add("message", msg).build();
+		response.send(returnObject);
+	}
 
 }
