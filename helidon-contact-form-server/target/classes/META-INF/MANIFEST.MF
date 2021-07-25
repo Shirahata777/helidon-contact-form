@@ -22,7 +22,8 @@ Class-Path: libs/helidon-webserver-2.3.2.jar libs/helidon-common-reactiv
  ader-2.3.2.jar libs/microprofile-metrics-api-2.3.2.jar libs/helidon-ser
  vice-common-rest-2.3.2.jar libs/helidon-common-context-2.3.2.jar libs/n
  etty-buffer-4.1.63.Final.jar libs/HikariCP-5.0.0.jar libs/slf4j-api-1.7
- .30.jar
+ .30.jar libs/mysql-connector-java-8.0.17.jar libs/protobuf-java-3.6.1.j
+ ar
 Main-Class: com.github.shirahata777.Main
 Created-By: Maven Integration for Eclipse
 
