@@ -1,5 +1,7 @@
 package com.github.shirahata777;
 
+import com.github.shirahata777.dao.FormDao;
+
 import io.helidon.common.LogConfig;
 import io.helidon.common.reactive.Single;
 import io.helidon.config.Config;
@@ -70,10 +72,12 @@ public final class Main {
 	private static Routing createRouting(Config config) {
 
 		MetricsSupport metrics = MetricsSupport.create();
-		HealthSupport health = HealthSupport.builder().addLiveness(HealthChecks.healthChecks()) // Adds a convenient set
-																								// of checks
-				.build();
+		FormDao dao = new FormDao(config);
+		HealthSupport health = HealthSupport.builder().addLiveness(HealthChecks.healthChecks()).build(); 
 
-		return Routing.builder().register(health).register(metrics).build();
+		return Routing.builder()
+				.register(health)
+				.register("/api", dao)
+				.register(metrics).build();
 	}
 }
