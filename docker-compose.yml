@@ -14,6 +14,8 @@ services:
     # Hot Module Replacement (HMR) is enable for virtual box.
     environment:
       - CHOKIDAR_USEPOLLING=true
+    networks:
+      - app_network
 
   helidon-contact-form-server:
     container_name: helidon-contact-form-server
@@ -25,4 +27,37 @@ services:
       - .:/helidon-contact-form-front
     tty: true
     stdin_open: true
+    expose:
+      - 3000
+    networks:
+      - app_network
+    depends_on:
+      - mysql
+    environment:
+      dataSourceClassName: jdbc:mysql://mysql:3306/contact_db
+      dataSource.user: root
+      dataSource.password: contact_db_password
+      dataSource.databaseName: contact_db
+      dataSource.setDriverClassName: com.mysql.cj.jdbc.Driver
+
+  mysql:
+    build: ./mysql
+    platform: linux/amd64
+    ports:
+      - "3306:3306"
+    expose:
+      - 3306
+    volumes:
+      - ./mysql/sql:/docker-entrypoint-initdb.d
+    environment:
+      # - DB_PORT=3306
+      MYSQL_DATABASE: "contact_db"
+      MYSQL_USER: "user"
+      MYSQL_ROOT_PASSWORD: "contact_db_password"
+    networks:
+      - app_network
+
+
+networks:
+  app_network:
 

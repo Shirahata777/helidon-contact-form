@@ -1,5 +1,7 @@
 package com.github.shirahata777;
 
+import com.github.shirahata777.api.FormData;
+
 import io.helidon.common.LogConfig;
 import io.helidon.common.reactive.Single;
 import io.helidon.config.Config;
@@ -15,26 +17,13 @@ import io.helidon.webserver.WebServer;
  */
 public final class Main {
 
-	/**
-	 * Cannot be instantiated.
-	 */
 	private Main() {
 	}
 
-	/**
-	 * Application main entry point.
-	 * 
-	 * @param args command line arguments.
-	 */
 	public static void main(final String[] args) {
 		startServer();
 	}
 
-	/**
-	 * Start the server.
-	 * 
-	 * @return the created {@link WebServer} instance
-	 */
 	static Single<WebServer> startServer() {
 
 		// load logging configuration
@@ -70,10 +59,12 @@ public final class Main {
 	private static Routing createRouting(Config config) {
 
 		MetricsSupport metrics = MetricsSupport.create();
-		HealthSupport health = HealthSupport.builder().addLiveness(HealthChecks.healthChecks()) // Adds a convenient set
-																								// of checks
-				.build();
+		FormData form = new FormData();
+		HealthSupport health = HealthSupport.builder().addLiveness(HealthChecks.healthChecks()).build(); 
 
-		return Routing.builder().register(health).register(metrics).build();
+		return Routing.builder()
+				.register(health)
+				.register("/api", form)
+				.register(metrics).build();
 	}
 }
