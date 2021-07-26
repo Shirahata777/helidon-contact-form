@@ -1,5 +1,6 @@
 package com.github.shirahata777;
 
+import com.github.shirahata777.api.FormData;
 import com.github.shirahata777.dao.FormDao;
 
 import io.helidon.common.LogConfig;
@@ -10,6 +11,7 @@ import io.helidon.health.checks.HealthChecks;
 import io.helidon.media.jsonp.JsonpSupport;
 import io.helidon.metrics.MetricsSupport;
 import io.helidon.webserver.Routing;
+import io.helidon.webserver.Service;
 import io.helidon.webserver.WebServer;
 
 /**
@@ -17,26 +19,13 @@ import io.helidon.webserver.WebServer;
  */
 public final class Main {
 
-	/**
-	 * Cannot be instantiated.
-	 */
 	private Main() {
 	}
 
-	/**
-	 * Application main entry point.
-	 * 
-	 * @param args command line arguments.
-	 */
 	public static void main(final String[] args) {
 		startServer();
 	}
 
-	/**
-	 * Start the server.
-	 * 
-	 * @return the created {@link WebServer} instance
-	 */
 	static Single<WebServer> startServer() {
 
 		// load logging configuration
@@ -72,12 +61,12 @@ public final class Main {
 	private static Routing createRouting(Config config) {
 
 		MetricsSupport metrics = MetricsSupport.create();
-		FormDao dao = new FormDao(config);
+		FormData form = new FormData();
 		HealthSupport health = HealthSupport.builder().addLiveness(HealthChecks.healthChecks()).build(); 
 
 		return Routing.builder()
 				.register(health)
-				.register("/api", dao)
+				.register("/api", form)
 				.register(metrics).build();
 	}
 }
