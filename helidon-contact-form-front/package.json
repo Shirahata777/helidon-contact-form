@@ -12,10 +12,12 @@
     "@tailwindcss/forms": "^0.3.3",
     "@tailwindcss/postcss7-compat": "^2.2.6",
     "autoprefixer": "^9",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "postcss": "^7",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "vue-axios": "^3.2.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

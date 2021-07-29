@@ -1,6 +1,6 @@
 <template>
   <div class="relative">
-    <form class="grid grid-cols-1 gap-6 m-16">
+    <form class="grid grid-cols-1 gap-6 m-16" @submit.prevent="saveContactData">
       <label class="block">
         <span class="text-gray-700">Full name</span>
         <input
@@ -16,6 +16,8 @@
             focus:ring focus:ring-indigo-200 focus:ring-opacity-50
           "
           placeholder=""
+          id="name"
+          v-model="name"
         />
       </label>
       <label class="block">
@@ -33,6 +35,8 @@
             focus:ring focus:ring-indigo-200 focus:ring-opacity-50
           "
           placeholder="john@example.com"
+          id="email"
+          v-model="email"
         />
       </label>
       <label class="block">
@@ -49,6 +53,8 @@
             focus:ring focus:ring-indigo-200 focus:ring-opacity-50
           "
           rows="3"
+          id="content"
+          v-model="content"
         ></textarea>
       </label>
       <div class="block">
@@ -68,7 +74,36 @@
   </div>
 </template>
 <script>
-export default {};
+import axios from "axios";
+export default {
+  data() {
+    return {
+      name: "",
+      email: "",
+      content: "",
+      msg: "",
+    };
+  },
+  methods: {
+    saveContactData: function () {
+      axios
+        .get("/api/save", {
+          params: {
+            name: this.name,
+            email: this.email,
+            content: this.content,
+          },
+        })
+        .then(response => {
+          console.log(response.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+      }
+    
+  },
+};
 </script>
 <style lang="scss">
 </style>

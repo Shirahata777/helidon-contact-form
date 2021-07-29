@@ -15,6 +15,7 @@ COPY ./helidon-contact-form-front .
 RUN npm rebuild
 RUN npm install -g vue-cli
 RUN yarn
+RUN yarn build
 
 ENV HOST 0.0.0.0
 

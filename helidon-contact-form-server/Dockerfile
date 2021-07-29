@@ -27,4 +27,6 @@ COPY --from=build /helidon-contact-form-server/target/libs ./libs
 
 CMD ["java", "-jar", "helidon-contact-form-server.jar"]
 
+ENV HOST 0.0.0.0
+
 EXPOSE 3000
