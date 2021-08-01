@@ -1,14 +1,19 @@
 <template>
-  <ContactForm/>
+  <div>
+    <ContactForm/>
+    <ContactDataList />
+  </div>
 </template>
 
 <script>
 import ContactForm from './components/contact-form.vue'
+import ContactDataList from './components/contact-data-list.vue'
 
 export default {
   name: 'App',
   components: {
-    ContactForm
+    ContactForm,
+    ContactDataList
   }
 }
 </script>
