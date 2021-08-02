@@ -14,7 +14,7 @@ import io.helidon.webserver.Service;
 
 import com.github.shirahata777.dao.FormDao;
 
-public class FormData implements Service {
+public class Contacting implements Service {
 
 	@Override
 	public void update(Routing.Rules rules) {
