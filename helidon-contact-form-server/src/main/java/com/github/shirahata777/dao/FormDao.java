@@ -9,6 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.github.shirahata777.query.ContactQuery;
 import com.zaxxer.hikari.HikariDataSource;
 
 public class FormDao {
@@ -22,13 +23,13 @@ public class FormDao {
 		return ds;
 	}
 
-	public boolean saveFormData(String name, String email, String content) {
+	public boolean saveFormData(ContactQuery query) {
 		String sql = "INSERT INTO contact (name, email, content) values (?, ?, ?)";
 
 		try (Connection conn = setDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql);) {
-			stmt.setString(1, name);
-			stmt.setString(2, email);
-			stmt.setString(3, content);
+			stmt.setString(1, query.getName());
+			stmt.setString(2, query.getEmail());
+			stmt.setString(3, query.getContent());
 			boolean ret = stmt.executeUpdate() != 0;
 			return ret;
 		} catch (SQLException e) {
@@ -36,11 +37,11 @@ public class FormDao {
 		}
 	}
 
-	public List< Map<String, String>> getAllFormData() {
+	public List<Map<String, String>> getAllFormData() {
 
 		String sql = "SELECT * FROM contact";
 
-		List< Map<String, String>> formDataList = new ArrayList<>();
+		List<Map<String, String>> formDataList = new ArrayList<>();
 
 		try (Connection conn = setDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql);) {
 			PreparedStatement ps = conn.prepareStatement(sql);

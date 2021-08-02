@@ -13,6 +13,7 @@ import io.helidon.webserver.ServerResponse;
 import io.helidon.webserver.Service;
 
 import com.github.shirahata777.dao.FormDao;
+import com.github.shirahata777.query.ContactQuery;
 
 public class Contacting implements Service {
 
@@ -23,12 +24,19 @@ public class Contacting implements Service {
 
 	private void saveFormDataHandler(ServerRequest request, ServerResponse response) {
 		Map<String, List<String>> params = request.queryParams().toMap();
+
+		ContactQuery query = new ContactQuery();
+
 		String name = params.get("name").get(0);
 		String email = params.get("email").get(0);
 		String content = params.get("content").get(0);
 
+		query.setName(name);
+		query.setEmail(email);
+		query.setContent(content);
+
 		FormDao formDao = new FormDao();
-		formDao.saveFormData(name, email, content);
+		formDao.saveFormData(query);
 
 		sendResponse(response, "Save OK!");
 	}
